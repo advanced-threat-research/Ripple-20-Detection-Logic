@@ -322,7 +322,7 @@ dns_heap_overflow.rules:
 
 alert dns any any -\> any any (flow:to_client; msg:\"Potential DNS heap
 overflow exploit (CVE-2020-11901)\";
-lua:dns_heap_overflow_variant_2.lua; sid:2020119012; rev:1;)\
+lua:dns_heap_overflow_variant_2.lua; sid:2020119012; rev:1;)
 
 
  Write Out-of-Bounds Using Routing Header Type 0
