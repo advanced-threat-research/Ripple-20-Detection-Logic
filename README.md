@@ -5,11 +5,6 @@ McAfee Advanced Threat Research
 
 *Steve Povolny, Douglas McKee, Mark Bereza, D. Kevin McGrath*
 
-![](media/image1.png){width="1.569251968503937in"
-height="0.43396434820647417in"} ![JSOF \|
-Crunchbase](media/image2.jpeg){width="0.9211931321084864in"
-height="0.41739173228346454in"}
-
 This document has been prepared by McAfee Advanced Threat Research in
 collaboration with JSOF who discovered and responsibly [disclosed the
 vulnerabilities](https://www.jsof-tech.com/ripple20/). It is intended to
