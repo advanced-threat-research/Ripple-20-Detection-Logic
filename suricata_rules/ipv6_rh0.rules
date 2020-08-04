@@ -1,0 +1,1 @@
+alert ipv6 any any -> any any (msg:"IPv6 RH0 Treck CVE-2020-11897"; decode-event:ipv6.rh type_0; decode-event:icmpv6.unknown_code; icmpv6-csum:invalid; dsize:>5; sid:2020118971; rev:1;)

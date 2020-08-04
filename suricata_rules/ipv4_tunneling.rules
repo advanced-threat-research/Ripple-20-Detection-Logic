@@ -1,0 +1,1 @@
+alert ip any any -> any any (msg:"IPv4 TUNNELING EXPLOIT (CVE-2020-11896)"; ip_proto:4; lua:tunnel_length_check.lua; sid:2020118961; rev:1;)

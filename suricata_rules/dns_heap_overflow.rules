@@ -1,0 +1,5 @@
+# Variant 1
+alert dns any any -> any any (flow:to_client; msg:"Potential DNS heap overflow exploit (CVE-2020-11901, variant 1)"; lua:dns_heap_overflow_variant_1.lua; sid:2020119011; rev:1;)
+
+# Variant 2
+alert dns any any -> any any (flow:to_client; msg:"Potential DNS heap overflow exploit (CVE-2020-11901, variant 2)"; lua:dns_heap_overflow_variant_2.lua; sid:2020119012; rev:1;)

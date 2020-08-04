@@ -1,0 +1,3 @@
+# Check for invalid payload size for DNS packets.
+alert dns any any -> any any (msg:"DNS packet too large"; flow:to_client; flowbits:set,flagged; lua:dns_size.lua; sid:2020119014; rev:1;)
+alert tcp any 53 -> any any (msg:"DNS over TCP packet too large"; flow:to_client,no_frag; flowbits:isnotset,flagged; lua:dns_tcp_size.lua; sid:2020119015; rev:1;)
