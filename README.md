@@ -1,4 +1,4 @@
-**Ripple20 Critical Vulnerabilities -- Detection Logic and Signatures**
+**Ripple20 Critical Vulnerabilities - Detection Logic and Signatures**
 =======================================================================
 
 McAfee Advanced Threat Research
