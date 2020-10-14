@@ -51,7 +51,7 @@ function match(args)
     for i = 1, answer_rrs do
 
         -- We're looking for 0x00 0x05 0x00 0x01 bytes to indicate TYPE=CNAME, CLASS=IN.
-        s[i], e[i] = string.find(payload, "\000\005\000\001", offset)
+        s[i], e[i] = string.find(payload, "\000\005\000\001", offset, true)
         if s[i] == nil then
             break
         end
