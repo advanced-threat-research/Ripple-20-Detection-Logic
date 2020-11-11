@@ -44,7 +44,7 @@ function match(args)
         local additional_rrs = get_short(11)
         if additional_rrs > 0 then
             -- We're looking for 0x00 0x00 0x29 for the NAME and TYPE fields. RFC requires these values for the OPT RR.
-            local s, e = string.find(payload, "\000\000\041", 13)    -- First 12 bytes are fixed-length fields.
+            local s, e = string.find(payload, "\000\000\041", 13, true)    -- First 12 bytes are fixed-length fields.
             if s then
                 local edns_max_len = get_short(e + 1)
 
