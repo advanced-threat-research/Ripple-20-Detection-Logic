@@ -67,6 +67,6 @@ function match(args)
     if total >= TOTAL_THRESHOLD or consecutive >= CONSECUTIVE_THRESHOLD then
         return 1
     end
-    
+
     return 0
 end

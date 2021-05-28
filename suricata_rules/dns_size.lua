@@ -20,7 +20,7 @@ function match(args)
 
     -- Obtain the protocol being used: TCP or UDP.
     local _, _, _, proto, _, _ = SCPacketTuple()
-    
+
     -- If it's DNS over TCP, compare the length specified in the first two bytes to the actual length.
     if proto == 6 then
         -- RFC 7766 specifies the length is reported in the first two bytes of the DNS layer.
@@ -38,7 +38,7 @@ function match(args)
     elseif proto == 17 then
 
         -- We add 8 to account for the UDP header.
-        local actual_udp_len = string.len(payload) + 8    
+        local actual_udp_len = string.len(payload) + 8
 
         -- Look for Additonal RRs which may contain the EDNS(0) OPT preudo-RR.
         local additional_rrs = get_short(11)

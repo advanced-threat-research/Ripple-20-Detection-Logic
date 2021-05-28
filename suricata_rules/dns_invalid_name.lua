@@ -60,9 +60,9 @@ function check_name(offset, upper_bound)
 
         -- Add the label length to the running total, plus an extra 1 for the "." separating labels.
         name_length = name_length + x + 1
-      
+
         -- Jump to the start of the next label.
-        offset = offset + x + 1 
+        offset = offset + x + 1
     end
 
     -- Truncate if necessary.
@@ -179,7 +179,7 @@ function match(args)
         elseif end_of_payload then
             return 0
         end
-    
+
         -- Get the record TYPE.
         local type = get_short(offset)
         offset = offset + 8
@@ -200,20 +200,22 @@ function match(args)
         -- Only process RDATA if it contains a domain name.
         if name_loc_in_rdata[type] then
             local start_of_name = name_loc_in_rdata[type](start_of_rdata)
-            local hit_end_of_rdata = false
-            valid, hit_end_of_rdata, offset = check_name(start_of_name, end_of_rdata)
-            if not valid then return 1 end
-
-            -- SOA records have two domain names back-to-back.
-            if type == 6 and not hit_end_of_rdata then
-                valid, _, offset = check_name(offset, end_of_rdata)
+            if start_of_name ~= nil then
+                local hit_end_of_rdata = false
+                valid, hit_end_of_rdata, offset = check_name(start_of_name, end_of_rdata)
                 if not valid then return 1 end
 
-            -- HIP records can contain an arbitrary number of domain names back-to-back.
-            elseif type == 55 then
-                while not hit_end_of_rdata do
-                    valid, hit_end_of_rdata, offset = check_name(offset, end_of_rdata)
+                -- SOA records have two domain names back-to-back.
+                if type == 6 and not hit_end_of_rdata then
+                    valid, _, offset = check_name(offset, end_of_rdata)
                     if not valid then return 1 end
+
+                -- HIP records can contain an arbitrary number of domain names back-to-back.
+                elseif type == 55 then
+                    while not hit_end_of_rdata do
+                        valid, hit_end_of_rdata, offset = check_name(offset, end_of_rdata)
+                        if not valid then return 1 end
+                    end
                 end
             end
         end
