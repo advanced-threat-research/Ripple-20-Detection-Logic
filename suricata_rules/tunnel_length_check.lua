@@ -19,7 +19,7 @@ function match(args)
 
    --find beginning of inner packet
    --start from IP protocol field in header
-   s,e	= string.find(b,"\004")
+   s,e	= string.find(b,"\004", 1, true)
    --inner packet should start 18 bytes later
    inner_packet = string.sub(b, s+18)
 
